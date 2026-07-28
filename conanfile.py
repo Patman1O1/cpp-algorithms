@@ -12,11 +12,13 @@ class CppAlgorithms(ConanFile):
     exports_sources = ("CMakeLists.txt", "cmake/*", "include/*", "tests/*")
 
     options = {
+        "build_all": [True, False],
         "build_benchmarks": [True, False],
         "build_tests": [True, False]
     }
 
     default_options = {
+        "build_all": True,
         "build_benchmarks": False,
         "build_tests": False
     }
