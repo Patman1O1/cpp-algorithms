@@ -9,7 +9,7 @@ class CppAlgorithms(ConanFile):
     description = ""
 
     settings = ("os", "arch", "compiler", "build_type")
-    exports_sources = ("CMakeLists.txt", "cmake/*", "include/*", "tests/*")
+    exports_sources = ("CMakeLists.txt", "benchmarks/*", "include/*", "tests/*")
 
     options = {
         "build_all": [True, False],
