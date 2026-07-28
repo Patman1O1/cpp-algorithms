@@ -1,0 +1,4 @@
+#ifndef CPP_ALGORITHMS_HPP
+#define CPP_ALGORITHMS_HPP
+
+#endif // #ifndef CPP_ALGORITHMS_HPP
