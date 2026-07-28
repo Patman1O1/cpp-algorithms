@@ -41,10 +41,8 @@ class CppAlgorithms(ConanFile):
 
     def generate(self) -> None:
         toolchain = CMakeToolchain(self)
-        if self.settings.build_type == "Debug":
-            toolchain.variables["BUILD_TESTS"] = True
-        else:
-            toolchain.variables["BUILD_TESTS"] = bool(self.options.build_tests)
+        toolchain.variables["BUILD_TESTS"] = bool(self.options.build_tests)
+        toolchain.variables["BUILD_BENCHMARKS"] = bool(self.options.build_benchmarks)
         toolchain.generate()
         CMakeDeps(self).generate()
 
