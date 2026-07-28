@@ -12,17 +12,30 @@ class CppAlgorithms(ConanFile):
     exports_sources = ("CMakeLists.txt", "cmake/*", "include/*", "tests/*")
 
     options = {
+        "build_benchmarks": [True, False],
         "build_tests": [True, False]
     }
 
     default_options = {
+        "build_benchmarks": False,
         "build_tests": False
     }
 
+    def configure(self) -> None:
+        if bool(self.options.build_all):
+            self.options.build_benchmarks.value = True
+            self.options.build_tests.value = True
+        elif self.settings.build_type == "Debug":
+            self.options.build_tests.value = True
+
     def build_requirements(self) -> None:
         self.tool_requires("cmake/[>=4.3.0]")
+
+        if bool(self.options.build_benchmarks):
+            self.test_requires("benchmark/[>=1.9.5]")
+
         if bool(self.options.build_tests) or self.settings.build_type == "Debug":
-            self.test_requires("gtest/1.14.0")
+            self.test_requires("gtest/1.17.0")
 
     def layout(self) -> None: cmake_layout(self)
 
