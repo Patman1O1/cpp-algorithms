@@ -18,7 +18,7 @@ class CppAlgorithms(ConanFile):
     }
 
     default_options = {
-        "build_all": True,
+        "build_all": False,
         "build_benchmarks": False,
         "build_tests": False
     }
