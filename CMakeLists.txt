@@ -33,6 +33,7 @@ if(PROJECT_IS_TOP_LEVEL)
     set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
     # Project Options
+    option(BUILD_BENCHMARKS "Build the project's benchmarks" OFF)
     option(BUILD_TESTS "Build the project's test suite" OFF)
 
     # Set default build type if not specified
@@ -118,6 +119,10 @@ endif()
 #-----------------------------------------------------------------------------------------------------------------------
 # Subdirectories
 #-----------------------------------------------------------------------------------------------------------------------
+if(BUILD_BENCHMARKS)
+    add_subdirectory(benchmarks)
+endif()
+
 if(BUILD_TESTS)
     add_subdirectory(tests)
 endif()
